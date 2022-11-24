@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
 import login from '../../assets/images/login.png'
 
 const Login = () => {
-    const { register, handleSubmit } = useForm();
-    const [data, setData] = useState("");
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const handleLogin = data =>{
+        console.log(data);
+    }
+
     return (
         <div className='flex flex-col p-16 lg:flex-row-reverse justify-center items-center'>
             <div className='lg:ml-8'>
                 <img src={login} alt="" className='' />
             </div>
-            <div className='h-[400px] px-5 flex justify-center items-center shadow-lg'>
+            <div className='h-[500px] px-5 flex justify-center items-center shadow-lg'>
                 <div>
                     <h4 className='text-4xl text-center'>Login</h4>
-                    <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+                    <form onSubmit={handleSubmit(handleLogin)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input {...register("email")} type="text" className="input input-bordered w-full max-w-xs"/>
+                            <input {...register("email", { required: 'email is required'})} type="text" className="input input-bordered w-full max-w-xs" />
+                            {errors.email && <p className='text-orange-600'>{errors.email?.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input {...register("password")} type="password" className="input input-bordered w-full max-w-xs"/>
+                            <input {...register("password", {required: "Password is required", minLength: { value: 6, message: 'password must be 6 characters or longer'}})} type="password" className="input input-bordered w-full max-w-xs" />
+                            {errors.password && <p className='text-orange-600'>{errors.password?.message}</p>}
                         </div>
-                        <p>{data}</p>
-                        <input type="submit" />
+                        <label className="label">
+                            <span className="label-text">Forget Password?</span>
+                        </label>
+                        <input className='btn btn-primary w-full text-white font-bold' value='Login' type="submit" />
                     </form>
+                    <p className='mt-2'>New to Amazing John? <Link className='text-orange-500' to='/signup'>Create an account</Link></p>
+                    <div className="divider">OR</div>
+                    <button className='btn btn-outline btn-primary w-full'> <FaGoogle className='mr-2 text-2xl'></FaGoogle> Continue with Google</button>
                 </div>
             </div>
         </div>
