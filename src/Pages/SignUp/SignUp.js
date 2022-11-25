@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import login from '../../assets/images/login.png';
@@ -9,15 +10,18 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUser, googleLogin } = useContext(AuthContext);
+    const [SignUpError, setSignUpError] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
 
     const handleSignUp = data => {
         console.log(data);
+        setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast('User created successfully')
                 const userInfo = {
                     displayName: data.name
                 }
@@ -25,7 +29,10 @@ const SignUp = () => {
                     .then(() => {})
                     .catch(error => console.error(error));
             })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error);
+                setSignUpError(error.message);
+            });
     };
 
     const handleGoogleSignUp = () => {
@@ -69,6 +76,9 @@ const SignUp = () => {
                                 {errors.password && <p className='text-orange-600'>{errors.password?.message}</p>}
                             </div>
                             <input className='btn btn-primary w-full text-white font-bold mt-4' value='SignUp' type="submit" />
+                            {
+                                SignUpError && <p className='text-orange-600'>{SignUpError}</p>
+                            }
                         </form>
                         <p className='mt-2'>Already have an account? <Link className='text-orange-500' to='/login'>Please login</Link></p>
                         <div className="divider">OR</div>
