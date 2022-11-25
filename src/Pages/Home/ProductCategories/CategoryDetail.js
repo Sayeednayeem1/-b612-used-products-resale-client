@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CategoryDetail = ({ facilities }) => {
+const CategoryDetail = ({ facilities, setCategoryDetails }) => {
     const { name, img, location, originalPrice, resalePrice, yearsOfUse, details } = facilities;
     return (
         <div className="card bg-base-100 shadow-xl">
@@ -16,7 +16,11 @@ const CategoryDetail = ({ facilities }) => {
                     <div className="badge badge-outline">$: {resalePrice}</div>
                     <div className="badge badge-outline">Years of use: {yearsOfUse} Year</div>
                 </div>
-                <button className='btn btn-primary text-white font-bold mt-4'>Book Now</button>
+                <label
+                    htmlFor="category-modal"
+                    className="btn btn-primary text-white font-bold mt-4"
+                    onClick={() => setCategoryDetails(facilities)}
+                >Book Now</label>
             </div>
         </div>
     );
