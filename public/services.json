@@ -1,0 +1,110 @@
+[
+    {
+        
+        "title": "Laptop Categories",
+        "img": "https://i.ibb.co/Cb61RXy/advertisement.jpg",
+        "price": "20.00",
+        "description": "Your laptop's specifications include its processor, RAM, operating system, and the device and product ID. Specs can also include a graphics card if you own a gaming laptop. Here is how to check your laptop's specs. Click on the Windows Start button in the bottom left corner of your screen.",
+        "facility": [
+            {
+                "name": "ASUS VivoBook",
+                "location": "Dhaka",
+                "originalPrice": "2000",
+                "resalePrice": "1500",
+                "yearsOfUse": "1",
+                "details": "Asus VivoBook S15 is a Windows 10 laptop with a 15.60-inch display that has a resolution of 1920x1080 pixels. It is powered by a Core i5 processor and it comes with 8GB of RAM. The Asus VivoBook S15 packs 256GB of SSD storage. Graphics are powered by Nvidia GeForce MX150.",
+                "img": "https://i.ibb.co/Cb61RXy/advertisement.jpg"
+            },
+            {
+                "name": "Lenevo ThinkPad",
+                "location": "Sylhet",
+                "originalPrice": "2000",
+                "resalePrice": "1600",
+                "yearsOfUse": "2",
+                "details": "ThinkPad is a line of business-oriented laptop computers and tablets designed, developed and marketed by Lenovo, and formerly by IBM until 2005, when IBM's PC business was acquired by Lenovo.",
+                "img": "https://i.ibb.co/q1WHk4W/dell-SGY0-LIf-TKZ4-unsplash.jpg"
+            },
+            {
+                "name": "MacBook pro",
+                "location": "Barisal",
+                "originalPrice": "4000",
+                "resalePrice": "2000",
+                "yearsOfUse": "2",
+                "details": "ac Pro is a series of workstations and servers for professionals that are designed, developed and marketed by Apple Inc. since 2006. The Mac Pro, by some performance benchmarks, is the most powerful computer that Apple offers.",
+                "img": "https://i.ibb.co/Dzx9fdZ/banner.jpg"
+            }
+        ]
+    },
+    {
+        
+        "title": "Smart Phone Categories",
+        "img": "https://i.ibb.co/rcgyXKq/ali-pli-Kbpj-CGIcfbo-unsplash.jpg",
+        "price": "20.00",
+        "description": "A smartphone is a cellular telephone with an integrated computer and other features not originally associated with telephones such as an operating system, web browsing, and the ability to run software applications.",
+        "facility": [
+            {
+                "name": "Samsung Galaxy",
+                "location": "Dhaka",
+                "originalPrice": "2000",
+                "resalePrice": "1000",
+                "yearsOfUse": "1",
+                "details": "Samsung specializes in the production of a wide variety of consumer and industry electronics, including appliances, digital media devices, semiconductors, memory chips, and integrated systems. ",
+                "img": "https://i.ibb.co/rcgyXKq/ali-pli-Kbpj-CGIcfbo-unsplash.jpg"
+            },
+            {
+                "name": "Vivo V20",
+                "location": "Jessore",
+                "originalPrice": "1000",
+                "resalePrice": "500",
+                "yearsOfUse": "2",
+                "details": "It is packed with 8 GB RAM with 128 GB internal storage. The smartphone is powered by Qualcomm SM7125 Snapdragon 720G Octa-core processor. Vivo V20 runs on the Android 11 + Funtouch 11 operating system.",
+                "img": "https://i.ibb.co/SdjXdHG/christian-wiediger-70ku6-P7kgmc-unsplash.jpg"
+            },
+            {
+                "name": "Oppo A54",
+                "location": "Chittagong",
+                "originalPrice": "500",
+                "resalePrice": "300",
+                "yearsOfUse": "2",
+                "details": "Just like another oppo phone,flagship price,entry spec. The phone was fine when it was running ColorOS 7.2. The update to ColorOS 11.1 made this device really slow. The back camera is not at all good compared to what companies like Realme and Xiaomi offers at the same price range.",
+                "img": "https://i.ibb.co/JxXnC2v/coinview-app-h7a6g0ua6-LM-unsplash.jpg"
+            }
+        ]
+    },
+    {
+        
+        "title": "Television Categories",
+        "img": "https://i.ibb.co/vYRs7rz/quaritsch-photography-m2zu-B8-Dqwy-M-unsplash.jpg",
+        "price": "200.00",
+        "description": "an electronic system of transmitting transient images of fixed or moving objects together with sound over a wire or through space by apparatus that converts light and sound into electrical waves and reconverts them into visible light rays and audible sound.",
+        "facility": [
+            {
+                "name": "LG",
+                "location": "Dhaka",
+                "originalPrice": "2000",
+                "resalePrice": "1000",
+                "yearsOfUse": "2",
+                "details": " LG's best TVs all use OLED displays, and they remain the biggest player in this market (see our article: LED vs OLED). Great viewing angle. Both their LED and OLED TVs generally have a wide viewing angle, making them great for wide seating areas",
+                "img": "https://i.ibb.co/vYRs7rz/quaritsch-photography-m2zu-B8-Dqwy-M-unsplash.jpg"
+            },
+            {
+                "name": "Walton",
+                "location": "Dhanmondi",
+                "originalPrice": "3000",
+                "resalePrice": "2000",
+                "yearsOfUse": "2",
+                "details": " Walton has received a good response in the Bangladesh market by selling LED TVs as well as other electronics products. the quality of their TVs is highly improved and the latest features are rich.",
+                "img": "https://i.ibb.co/YNQnSVF/linus-mimietz-gvpt-Kmonylk-unsplash.jpg"
+            },
+            {
+                "name": "Samsung",
+                "location": "Rangpur",
+                "originalPrice": "1000",
+                "resalePrice": "500",
+                "yearsOfUse": "2",
+                "details": "For older models, you will find the model code and serial number at the back of the TV. For much newer Smart TV, you can get the model and serial number by going to Menu -> Support -> Contact Samsung You will find the following information.",
+                "img": "https://i.ibb.co/Y7f5NvZ/fernando-hernandez-l-Vu-V7-Acf-Or-Y-unsplash.jpg"
+            }
+        ]
+    }
+]

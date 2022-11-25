@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import login from '../../assets/images/login.png'
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { signIn } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState('');
 
-    const handleLogin = data =>{
+    const handleLogin = data => {
         console.log(data);
+        setLoginError('');
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+                setLoginError(error.message);
+            });
     }
 
     return (
@@ -24,20 +37,23 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input {...register("email", { required: 'email is required'})} type="text" className="input input-bordered w-full max-w-xs" />
+                            <input {...register("email", { required: 'email is required' })} type="text" className="input input-bordered w-full max-w-xs" />
                             {errors.email && <p className='text-orange-600'>{errors.email?.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input {...register("password", {required: "Password is required", minLength: { value: 6, message: 'password must be 6 characters or longer'}})} type="password" className="input input-bordered w-full max-w-xs" />
+                            <input {...register("password", { required: "Password is required", minLength: { value: 6, message: 'password must be 6 characters or longer' } })} type="password" className="input input-bordered w-full max-w-xs" />
                             {errors.password && <p className='text-orange-600'>{errors.password?.message}</p>}
                         </div>
                         <label className="label">
                             <span className="label-text">Forget Password?</span>
                         </label>
                         <input className='btn btn-primary w-full text-white font-bold' value='Login' type="submit" />
+                        <div>
+                            {loginError && <p className='text-orange-600'>{loginError}</p>}
+                        </div>
                     </form>
                     <p className='mt-2'>New to Amazing John? <Link className='text-orange-500' to='/signup'>Create an account</Link></p>
                     <div className="divider">OR</div>

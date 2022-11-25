@@ -1,14 +1,40 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import login from '../../assets/images/login.png';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { createUser, updateUser, googleLogin } = useContext(AuthContext);
 
-    const handleSignUp = data =>{
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleSignUp = data => {
         console.log(data);
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {})
+                    .catch(error => console.error(error));
+            })
+            .catch(error => console.error(error));
+    };
+
+    const handleGoogleSignUp = () => {
+        googleLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
     }
 
     return (
@@ -46,7 +72,7 @@ const SignUp = () => {
                         </form>
                         <p className='mt-2'>Already have an account? <Link className='text-orange-500' to='/login'>Please login</Link></p>
                         <div className="divider">OR</div>
-                        <button className='btn btn-outline btn-primary w-full'> <FaGoogle className='mr-2 text-2xl'></FaGoogle> SignUp with Google</button>
+                        <button onClick={handleGoogleSignUp} className='btn btn-outline btn-primary w-full'> <FaGoogle className='mr-2 text-2xl'></FaGoogle> SignUp with Google</button>
                     </div>
                 </div>
             </div>
