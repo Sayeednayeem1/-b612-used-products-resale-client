@@ -8,6 +8,7 @@ import CategoryDetails from "../../Pages/Home/ProductCategories/CategoryDetails"
 import Login from "../../Pages/Login/Login";
 import PageNotFound from "../../Pages/PageNotFound/PageNotFound";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -34,14 +35,14 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/categoryDetails/:id',
-                element: <CategoryDetails></CategoryDetails>,
+                element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:4000/services/${params.id}`)
             }
         ]
     },
     {
         path:'/dashboard',
-        element: <DashBoard></DashBoard>
+        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>
     },
     {
         path: '*',
