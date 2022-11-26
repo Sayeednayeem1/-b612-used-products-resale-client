@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 import AllCategories from './AllCategories';
 
 const ProductCategories = () => {
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:4000/services')
+    const { data: products = [] } = useQuery({
+        queryKey: ['services'],
+        queryFn: () => fetch('http://localhost:5000/services')
             .then(res => res.json())
-            .then(data => setProducts(data));
-    }, [])
+    })
+
+    // useEffect(() => {
+    //     fetch('http://localhost:4000/services')
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data));
+    // }, [])
 
     return (
         <div>

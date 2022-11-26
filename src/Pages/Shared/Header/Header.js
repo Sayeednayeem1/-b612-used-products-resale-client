@@ -45,6 +45,9 @@ const Header = () => {
                     {headers}
                 </ul>
             </div>
+            <div className="navbar-end">
+                <button className='btn btn-primary font-bold text-white'>{user?.displayName}</button>
+            </div>
         </div>
     );
 };
