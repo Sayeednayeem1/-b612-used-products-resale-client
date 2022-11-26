@@ -23,6 +23,7 @@ const CategoryDetails = () => {
             {
                 categoryDetails &&
                 <Modal
+                    setCategoryDetails={setCategoryDetails}
                     categoryDetails={categoryDetails}
                 ></Modal>}
         </section>
