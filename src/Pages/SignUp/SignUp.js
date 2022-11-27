@@ -6,13 +6,20 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import login from '../../assets/images/login.png';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUser, googleLogin } = useContext(AuthContext);
     const [SignUpError, setSignUpError] = useState('');
+    const [userEmail, setUserEmail] = useState('');
 
+    const [token] = useToken(userEmail);
     const navigate = useNavigate();
+
+    if(token){
+        navigate('/');
+    }
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -60,20 +67,21 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                userToken(email);
+                setUserEmail(email);
+                // userToken(email);
             })
     };
 
-    const userToken = email =>{
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-        .then( res => res.json())
-        .then( data =>{
-            if (data.accessToken) {
-                localStorage.setItem('accessToken', data.accessToken);
-                navigate('/');
-            }
-        })
-    }
+    // const userToken = email =>{
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then( res => res.json())
+    //     .then( data =>{
+    //         if (data.accessToken) {
+    //             localStorage.setItem('accessToken', data.accessToken);
+    //             navigate('/');
+    //         }
+    //     })
+    // }
 
     return (
         <div>
