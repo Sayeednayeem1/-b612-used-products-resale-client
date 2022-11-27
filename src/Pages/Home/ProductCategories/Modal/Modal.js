@@ -11,13 +11,17 @@ const Modal = ({ categoryDetails, setCategoryDetails }) => {
         const form = event.target;
         const phone = form.phone.value;
         const name = form.name.value;
+        const price = form.price.value;
+        const location = form.location.value;
         const email = form.email.value;
 
         const order = {
             categoryName: orderName,
             buyerName: name,
             email,
-            phone
+            phone,
+            price,
+            location
         }
         console.log(order);
 
@@ -55,9 +59,9 @@ const Modal = ({ categoryDetails, setCategoryDetails }) => {
                         <h1 className='text-2xl mb-2 text-green-600 ml-2'>Your Phone Number</h1>
                         <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full mb-2 " />
                         <h1 className='text-2xl mb-2 text-green-600 ml-2'>Location Of Buyer</h1>
-                        <input type="text" readOnly value={location} className="input input-bordered w-full mb-2 " />
+                        <input name='location' type="text" readOnly value={location} className="input input-bordered w-full mb-2 " />
                         <h1 className='text-2xl mb-2 text-green-600 ml-2'>Price In $</h1>
-                        <input type="text" readOnly value={resalePrice} placeholder='resale price' className="input input-bordered w-full mb-2 " />
+                        <input name='price' type="text" readOnly value={resalePrice} placeholder='resale price' className="input input-bordered w-full mb-2 " />
 
                         <input className='btn btn-primary w-full text-white font-bold' type="submit" value='submit' />
                     </form>

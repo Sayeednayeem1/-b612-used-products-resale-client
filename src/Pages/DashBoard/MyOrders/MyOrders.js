@@ -1,42 +1,49 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+
+    const url = `http://localhost:5000/orders?email=${user?.email}`;
+
+    const { data: orders = [] } = useQuery({
+        queryKey: ['orders', user?.email],
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+        }
+    })
+
 
     return (
         <div>
-            <h5 className='text-2xl'>My Orders</h5>
+            <h5 className='text-2xl mb-5'>My Orders</h5>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>product Name</th>
+                            <th>price</th>
+                            <th>Location</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        <tr className="hover">
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {
+                            orders.map((order, x) => <tr key={order._id}>
+                                <th>{x+1}</th>
+                                <td>{order.buyerName}</td>
+                                <td>{order.categoryName}</td>
+                                <td>$: {order.price}</td>
+                                <td>{order.location}</td>
+                                <td className='text-red-600 btn border-none font-bold'>X</td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
             </div>
