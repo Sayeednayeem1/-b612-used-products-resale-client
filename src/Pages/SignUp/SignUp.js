@@ -29,7 +29,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
+                        saveUserData(data.name, data.email, data.role);
                     })
                     .catch(error => console.error(error));
             })
@@ -48,8 +48,8 @@ const SignUp = () => {
             .catch(error => console.error(error));
     };
 
-    const saveUserData = (name, email) =>{
-        const user = {name, email};
+    const saveUserData = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -57,10 +57,11 @@ const SignUp = () => {
             },
             body: JSON.stringify(user)
         })
-        .then( res => res.json())
-        .then(data =>{
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/');
+            })
     }
 
     return (
