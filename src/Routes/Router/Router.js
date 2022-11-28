@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
             {
                 path: '/categoryDetails/:id',
                 element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://buy-sell-server-mu.vercel.app/services/${params.id}`)
             }
         ]
     },

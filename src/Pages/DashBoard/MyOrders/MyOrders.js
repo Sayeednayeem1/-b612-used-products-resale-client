@@ -6,9 +6,9 @@ const MyOrders = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/orders?email=${user?.email}`;
+    const url = `https://buy-sell-server-mu.vercel.app/orders?email=${user?.email}`;
 
-    const { data: orders = [] } = useQuery({
+    const { data: orders = [], isLoading } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -19,7 +19,11 @@ const MyOrders = () => {
             const data = await res.json();
             return data;
         }
-    })
+    });
+
+    if (isLoading) {
+        return <progress className="progress w-56"></progress>;
+    }
 
 
     return (

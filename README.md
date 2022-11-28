@@ -1,3 +1,22 @@
+
+Hello! welcome to my website Amazing John!
+Live Website Link: https://amazing-john.web.app/
+
+Website details =>
+1 => This is a buy and sale website.
+2 => In the home page there are some details of product categories.
+3 => If you click on the categories it will take you to the product page.
+4 => there is of course login and sign up route you can sign up or login anytime..
+5 => also there is one particular admin.
+6 => only admin can make some one admin
+7 => Also a seller can add the product he/she wanna sell.
+8 => there are plenty of options for a buyer to buy theres lots and lots of products...
+9 => And most importantly your data is totally secured with us...
+10 => We provide the best services..
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -15,7 +15,7 @@ const AddProduct = () => {
     const { data: specialties, isLoading } = useQuery({
         queryKey: ['specialty'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/ordersSpecialty')
+            const res = await fetch('https://buy-sell-server-mu.vercel.app/ordersSpecialty')
             const data = await res.json();
             return data;
         }
@@ -44,7 +44,7 @@ const AddProduct = () => {
                     }
 
                     // todo save product information to the database
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://buy-sell-server-mu.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
