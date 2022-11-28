@@ -72,17 +72,6 @@ const SignUp = () => {
             })
     };
 
-    // const userToken = email =>{
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
-    //     .then( res => res.json())
-    //     .then( data =>{
-    //         if (data.accessToken) {
-    //             localStorage.setItem('accessToken', data.accessToken);
-    //             navigate('/');
-    //         }
-    //     })
-    // }
-
     return (
         <div>
             <div className='flex flex-col p-16 lg:flex-row-reverse justify-center items-center'>
