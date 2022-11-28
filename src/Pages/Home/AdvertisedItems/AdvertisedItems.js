@@ -1,16 +1,43 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Advertisement from '../../../assets/images/advertisement.jpg';
+import AdvertisementItem from './AdvertisementItem';
 
 const AdvertisedItems = () => {
+
+
+    const { data: products = [], isLoading } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            try {
+                const res = await fetch('https://buy-sell-server-mu.vercel.app/products', {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                const data = await res.json();
+                return data;
+            }
+            catch (error) {
+
+            }
+        }
+    });
+
+    if (isLoading) {
+        return <progress className="progress w-56"></progress>
+    }
+
     return (
-        <div className="hero shadow-lg mt-10 px-8">
-            <div className="hero-content flex-col lg:flex-row">
-                <img src={Advertisement} className="rounded-lg lg:w-1/2 shadow-2xl" alt='' />
-                <div>
-                    <h1 className="text-5xl font-bold">ASUS VivoBook</h1>
-                    <p className="py-6">Overall, the Asus Vivobook 15 (X1502) offers decent performance, <br/> and I feel the laptop is a good choice for students. <br/> It looks modern, and it comes with many features (like fingerprint sensor and Wi-Fi 6) that might attract young customers.</p>
-                    <button className='btn btn-primary font-bold px-8 text-white'>Order Now</button>
-                </div>
+        <div className='mt-20'>
+            <h1 className='text-4xl text-green-600 font-bold text-center mb-6'>Our Products Demo</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {
+                    products.map(product => <AdvertisementItem
+                        key={product._id}
+                        product={product}
+                    ></AdvertisementItem>)
+                }
             </div>
         </div>
     );
