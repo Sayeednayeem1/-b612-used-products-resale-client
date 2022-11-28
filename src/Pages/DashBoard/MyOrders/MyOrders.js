@@ -38,7 +38,6 @@ const MyOrders = () => {
                             <th>product Name</th>
                             <th>price</th>
                             <th>Location</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +48,6 @@ const MyOrders = () => {
                                 <td>{order.categoryName}</td>
                                 <td>$: {order.price}</td>
                                 <td>{order.location}</td>
-                                <td className='text-red-600 btn border-none font-bold'>X</td>
                             </tr>)
                         }
                     </tbody>
