@@ -5,12 +5,15 @@ import { FaGoogle } from 'react-icons/fa';
 import login from '../../assets/images/login.png'
 import { AuthContext } from '../../contexts/AuthProvider';
 import useToken from '../../hooks/useToken';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
+
+    const googleProvider = new GoogleAuthProvider();
 
     const [token] = useToken(loginUserEmail);
 
@@ -36,7 +39,15 @@ const Login = () => {
                 console.error(error);
                 setLoginError(error.message);
             });
-    }
+    };
+    const handleGoogleSignUp = () => {
+        googleLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
+    };
 
     return (
         <div className='flex flex-col p-16 lg:flex-row-reverse justify-center items-center'>
@@ -71,7 +82,7 @@ const Login = () => {
                     </form>
                     <p className='mt-2'>New to Amazing John? <Link className='text-orange-500' to='/signup'>Create an account</Link></p>
                     <div className="divider">OR</div>
-                    <button className='btn btn-outline btn-primary w-full'> <FaGoogle className='mr-2 text-2xl'></FaGoogle> Continue with Google</button>
+                    <button onClick={handleGoogleSignUp} className='btn btn-outline btn-primary w-full'> <FaGoogle className='mr-2 text-2xl'></FaGoogle> Continue with Google</button>
                 </div>
             </div>
         </div>
